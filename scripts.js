@@ -34,18 +34,24 @@ function operate(firstNum, operator, secondNum) {
     }
 }
 
-const digitButtons = document.querySelectorAll('.digit-button');
-console.log("list of digit buttons:", digitButtons)
+function initialiseDigitButtons() {
+    const digitButtons = document.querySelectorAll('.digit-button');
+    console.log("list of digit buttons:", digitButtons)
 
-for (let i=0; i<digitButtons.length; i++) {
-    digitButtons[i].addEventListener('click', function() {
-        const digitValue = this.textContent;
-        console.log("button pressed:", digitValue)
-    });
+    for (let i=0; i<digitButtons.length; i++) {
+        digitButtons[i].addEventListener('click', function() {
+            const digitValue = this.textContent;
+            console.log("button pressed:", digitValue)
+        });
+    }
 }
+
+
 
 add(2,6)
 subtract(3,4)
 multiply(4,4)
 divide (10,2)
+
+initialiseDigitButtons()
 
