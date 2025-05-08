@@ -22,7 +22,20 @@ function divide (num1, num2) {
     return num1 / num2
 }
 
+function operate(firstNum, operator, secondNum) {
+    if (operator === "+") {
+        return add(firstNum, secondNum);
+    } else if (operator === "-") {
+        return subtract(firstNum, secondNum);
+    } else if (operator === "*") {
+        return multiply(firstNum, secondNum);
+    } else if (operator === "/") {
+        return divide(firstNum, secondNum);
+    }
+}
+
 add(2,6)
 subtract(3,4)
 multiply(4,4)
 divide (10,2)
+
