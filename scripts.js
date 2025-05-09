@@ -30,15 +30,15 @@ function initialiseDigitButtons() {
 
     for (const button of digitButtons) {
         button.addEventListener('click', function() {
-            const digitValue = this.textContent;
-            appendToDisplay(digitValue);
+            const clickedDigit = this.textContent;
+            appendToDisplay(clickedDigit);
 
             if (operator === "") {
-                firstOperand += digitValue;
+                firstOperand += clickedDigit;
                 console.log("first number is:", firstOperand);
             }
             else if (operator !== "") {
-                secondOperand += digitValue;
+                secondOperand += clickedDigit;
                 console.log("second number is:", secondOperand);
             }            
         });
@@ -50,9 +50,9 @@ function initialiseOperatorButtons() {
 
     for (const button of operatorButtons) {
         button.addEventListener('click', function() {
-        const operatorValue = this.textContent;
-        appendToDisplay(operatorValue);
-        operator = operatorValue;
+        const clickedOperator = this.textContent;
+        appendToDisplay(clickedOperator);
+        operator = clickedOperator;
         console.log("operator is:", operator);
         });
     }
