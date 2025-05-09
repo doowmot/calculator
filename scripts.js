@@ -60,6 +60,25 @@ function initialiseOperatorButtons() {
     }
 }
 
+function initialiseControlButtons() {
+    const equalsButton = document.getElementById("equals-button")
+    const clearButton = document.getElementById("clear-button")
+
+    equalsButton.addEventListener('click', function() {
+        const equalsValue = this.textContent;
+        console.log("button pressed:", equalsValue)
+        display(equalsValue)
+    });
+
+    clearButton.addEventListener('click', function() {
+        const clearValue = this.textContent;
+        console.log("button pressed:", clearValue)
+
+        const calcDisplay = document.getElementById("display");
+        calcDisplay.textContent = ""
+    });
+}
+
 function display(valueToDisplay) {
     const calcDisplay = document.getElementById("display")
     calcDisplay.textContent += valueToDisplay
@@ -69,6 +88,8 @@ add(2,6)
 subtract(3,4)
 multiply(4,4)
 divide (10,2)
+
 initialiseDigitButtons()
 initialiseOperatorButtons()
+initialiseControlButtons()
 
