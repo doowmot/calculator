@@ -3,22 +3,18 @@ let operator = null
 let secondNum = null
 
 function add(num1, num2) {
-    console.log("add function:", num1+num2)
     return num1 + num2
 }
 
 function subtract (num1, num2) {
-    console.log("subtract function:", num1-num2)
     return num1 - num2
 }
 
 function multiply (num1, num2) {
-    console.log("multiply function:", num1*num2)
     return num1 * num2
 }
 
 function divide (num1, num2) {
-    console.log("divide function:", num1/num2)
     return num1 / num2
 }
 
@@ -34,9 +30,13 @@ function operate(firstNum, operator, secondNum) {
     }
 }
 
+function display(valueToDisplay) {
+    const calcDisplay = document.getElementById("display")
+    calcDisplay.textContent += valueToDisplay
+}
+
 function initialiseDigitButtons() {
     const digitButtons = document.querySelectorAll(".digit-button");
-    console.log("list of digit buttons:", digitButtons)
 
     for (const button of digitButtons) {
         button.addEventListener('click', function() {
@@ -49,7 +49,6 @@ function initialiseDigitButtons() {
 
 function initialiseOperatorButtons() {
     const operatorButtons = document.querySelectorAll(".operator-button")
-    console.log("list of operator buttons:", operatorButtons)
 
     for (const button of operatorButtons) {
         button.addEventListener('click', function() {
@@ -66,30 +65,21 @@ function initialiseControlButtons() {
 
     equalsButton.addEventListener('click', function() {
         const equalsValue = this.textContent;
-        console.log("button pressed:", equalsValue)
         display(equalsValue)
     });
 
     clearButton.addEventListener('click', function() {
         const clearValue = this.textContent;
-        console.log("button pressed:", clearValue)
 
         const calcDisplay = document.getElementById("display");
         calcDisplay.textContent = ""
     });
 }
 
-function display(valueToDisplay) {
-    const calcDisplay = document.getElementById("display")
-    calcDisplay.textContent += valueToDisplay
+function initialiseCalculator() {
+    initialiseDigitButtons()
+    initialiseOperatorButtons()
+    initialiseControlButtons()
 }
 
-add(2,6)
-subtract(3,4)
-multiply(4,4)
-divide (10,2)
-
-initialiseDigitButtons()
-initialiseOperatorButtons()
-initialiseControlButtons()
-
+initialiseCalculator()
