@@ -42,8 +42,14 @@ function initialiseDigitButtons() {
         button.addEventListener('click', function() {
             const digitValue = this.textContent;
             console.log("button pressed:", digitValue);
+            display(digitValue)
         });
     }
+}
+
+function display(valueToDisplay) {
+    const calcDisplay = document.getElementById("display")
+    calcDisplay.textContent += valueToDisplay
 }
 
 add(2,6)
