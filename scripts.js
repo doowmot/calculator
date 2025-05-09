@@ -38,20 +38,17 @@ function initialiseDigitButtons() {
     const digitButtons = document.querySelectorAll('.digit-button');
     console.log("list of digit buttons:", digitButtons)
 
-    for (let i=0; i<digitButtons.length; i++) {
-        digitButtons[i].addEventListener('click', function() {
+    for (const button of digitButtons) {
+        button.addEventListener('click', function() {
             const digitValue = this.textContent;
-            console.log("button pressed:", digitValue)
+            console.log("button pressed:", digitValue);
         });
     }
 }
-
-
 
 add(2,6)
 subtract(3,4)
 multiply(4,4)
 divide (10,2)
-
 initialiseDigitButtons()
 
