@@ -35,7 +35,7 @@ function operate(firstNum, operator, secondNum) {
 }
 
 function initialiseDigitButtons() {
-    const digitButtons = document.querySelectorAll('.digit-button');
+    const digitButtons = document.querySelectorAll(".digit-button");
     console.log("list of digit buttons:", digitButtons)
 
     for (const button of digitButtons) {
@@ -43,6 +43,19 @@ function initialiseDigitButtons() {
             const digitValue = this.textContent;
             console.log("button pressed:", digitValue);
             display(digitValue)
+        });
+    }
+}
+
+function initialiseOperatorButtons() {
+    const operatorButtons = document.querySelectorAll(".operator-button")
+    console.log("list of operator buttons:", operatorButtons)
+
+    for (const button of operatorButtons) {
+        button.addEventListener('click', function() {
+        const operatorValue = this.textContent;
+        console.log("button pressed:", operatorValue);
+        display(operatorValue)
         });
     }
 }
@@ -57,4 +70,5 @@ subtract(3,4)
 multiply(4,4)
 divide (10,2)
 initialiseDigitButtons()
+initialiseOperatorButtons()
 
