@@ -1,6 +1,6 @@
-let firstNum = null
-let operator = null
-let secondNum = null
+let firstNum = ""
+let operator = ""
+let secondNum = ""
 
 function add(num1, num2) {
     return num1 + num2
@@ -41,8 +41,16 @@ function initialiseDigitButtons() {
     for (const button of digitButtons) {
         button.addEventListener('click', function() {
             const digitValue = this.textContent;
-            console.log("button pressed:", digitValue);
             display(digitValue)
+
+            if (operator == "") {
+                firstNum += digitValue
+                console.log("first number is:", firstNum)
+            }
+            else if (operator != "") {
+                secondNum += digitValue
+                console.log("second number is:", secondNum)
+            }            
         });
     }
 }
@@ -53,8 +61,9 @@ function initialiseOperatorButtons() {
     for (const button of operatorButtons) {
         button.addEventListener('click', function() {
         const operatorValue = this.textContent;
-        console.log("button pressed:", operatorValue);
         display(operatorValue)
+        operator = operatorValue
+        console.log("operator is:", operator)
         });
     }
 }
@@ -62,17 +71,20 @@ function initialiseOperatorButtons() {
 function initialiseControlButtons() {
     const equalsButton = document.getElementById("equals-button")
     const clearButton = document.getElementById("clear-button")
+    const calcDisplay = document.getElementById("display");
 
     equalsButton.addEventListener('click', function() {
-        const equalsValue = this.textContent;
-        display(equalsValue)
+        calcDisplay.textContent = ""
+        const result = operate(parseInt(firstNum), operator, parseInt(secondNum))
+        display(result)
+        console.log("the result is:", result)
     });
 
     clearButton.addEventListener('click', function() {
-        const clearValue = this.textContent;
-
-        const calcDisplay = document.getElementById("display");
         calcDisplay.textContent = ""
+        firstNum = ""
+        operator = ""
+        secondNum = ""
     });
 }
 
