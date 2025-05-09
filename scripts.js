@@ -1,38 +1,28 @@
-let firstNum = ""
-let operator = ""
-let secondNum = ""
+let firstOperand = "";
+let operator = "";
+let secondOperand = "";
 
-function add(num1, num2) {
-    return num1 + num2
-}
+const add = (a, b) =>  Number(a) + Number(b);
+const subtract = (a, b) => Number(a) - Number(b);
+const multiply = (a, b) => Number(a) * Number(b);
+const divide = (a, b) => Number(a) / Number(b);
 
-function subtract (num1, num2) {
-    return num1 - num2
-}
-
-function multiply (num1, num2) {
-    return num1 * num2
-}
-
-function divide (num1, num2) {
-    return num1 / num2
-}
-
-function operate(firstNum, operator, secondNum) {
-    if (operator === "+") {
-        return add(firstNum, secondNum);
-    } else if (operator === "-") {
-        return subtract(firstNum, secondNum);
-    } else if (operator === "*") {
-        return multiply(firstNum, secondNum);
-    } else if (operator === "/") {
-        return divide(firstNum, secondNum);
+function operate(a, operator, b) {
+    switch (operator) {
+        case "+":
+            return add(a, b);
+        case "-":
+            return subtract(a, b);
+        case "*":
+            return multiply(a, b);
+        case "/":
+            return divide(a, b);
     }
 }
 
-function display(valueToDisplay) {
-    const calcDisplay = document.getElementById("display")
-    calcDisplay.textContent += valueToDisplay
+function appendToDisplay(valueToDisplay) {
+    const calcDisplay = document.getElementById("display");
+    calcDisplay.textContent += valueToDisplay;
 }
 
 function initialiseDigitButtons() {
@@ -41,57 +31,57 @@ function initialiseDigitButtons() {
     for (const button of digitButtons) {
         button.addEventListener('click', function() {
             const digitValue = this.textContent;
-            display(digitValue)
+            appendToDisplay(digitValue);
 
-            if (operator == "") {
-                firstNum += digitValue
-                console.log("first number is:", firstNum)
+            if (operator === "") {
+                firstOperand += digitValue;
+                console.log("first number is:", firstOperand);
             }
-            else if (operator != "") {
-                secondNum += digitValue
-                console.log("second number is:", secondNum)
+            else if (operator !== "") {
+                secondOperand += digitValue;
+                console.log("second number is:", secondOperand);
             }            
         });
     }
 }
 
 function initialiseOperatorButtons() {
-    const operatorButtons = document.querySelectorAll(".operator-button")
+    const operatorButtons = document.querySelectorAll(".operator-button");
 
     for (const button of operatorButtons) {
         button.addEventListener('click', function() {
         const operatorValue = this.textContent;
-        display(operatorValue)
-        operator = operatorValue
-        console.log("operator is:", operator)
+        appendToDisplay(operatorValue);
+        operator = operatorValue;
+        console.log("operator is:", operator);
         });
     }
 }
 
 function initialiseControlButtons() {
-    const equalsButton = document.getElementById("equals-button")
-    const clearButton = document.getElementById("clear-button")
+    const equalsButton = document.getElementById("equals-button");
+    const clearButton = document.getElementById("clear-button");
     const calcDisplay = document.getElementById("display");
 
     equalsButton.addEventListener('click', function() {
-        calcDisplay.textContent = ""
-        const result = operate(parseInt(firstNum), operator, parseInt(secondNum))
-        display(result)
-        console.log("the result is:", result)
+        calcDisplay.textContent = "";
+        const result = operate(Number(firstOperand), operator, Number(secondOperand));
+        appendToDisplay(result);
+        console.log("the result is:", result);
     });
 
     clearButton.addEventListener('click', function() {
-        calcDisplay.textContent = ""
-        firstNum = ""
-        operator = ""
-        secondNum = ""
+        calcDisplay.textContent = "";
+        firstOperand = "";
+        operator = "";
+        secondOperand = "";
     });
 }
 
 function initialiseCalculator() {
-    initialiseDigitButtons()
-    initialiseOperatorButtons()
-    initialiseControlButtons()
+    initialiseDigitButtons();
+    initialiseOperatorButtons();
+    initialiseControlButtons();
 }
 
-initialiseCalculator()
+initialiseCalculator();
