@@ -25,22 +25,25 @@ function appendToDisplay(valueToDisplay) {
     calcDisplay.textContent += valueToDisplay;
 }
 
+function handleInputDigit(digit) {
+    appendToDisplay(digit);
+
+    if (operator === "") {
+        firstOperand += digit;
+        console.log("first number is:", firstOperand);
+    } else if (operator !== "") {
+        secondOperand += digit;
+        console.log("second number is:", secondOperand);
+    }     
+}
+
 function initialiseDigitButtons() {
     const digitButtons = document.querySelectorAll(".digit-button");
 
     for (const button of digitButtons) {
         button.addEventListener('click', function() {
-            const clickedDigit = this.textContent;
-            appendToDisplay(clickedDigit);
-
-            if (operator === "") {
-                firstOperand += clickedDigit;
-                console.log("first number is:", firstOperand);
-            }
-            else if (operator !== "") {
-                secondOperand += clickedDigit;
-                console.log("second number is:", secondOperand);
-            }            
+            const clickedDigit = this.textContent;        
+            handleInputDigit(clickedDigit);
         });
     }
 }
