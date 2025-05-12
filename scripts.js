@@ -25,7 +25,7 @@ function appendToDisplay(valueToDisplay) {
     calcDisplay.textContent += valueToDisplay;
 }
 
-function handleInputDigit(digit) {
+function handleDigitInput(digit) {
     appendToDisplay(digit);
 
     if (operator === "") {
@@ -43,7 +43,7 @@ function initialiseDigitButtons() {
     for (const button of digitButtons) {
         button.addEventListener('click', function() {
             const clickedDigit = this.textContent;        
-            handleInputDigit(clickedDigit);
+            handleDigitInput(clickedDigit);
         });
     }
 }
