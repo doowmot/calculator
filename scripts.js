@@ -2,6 +2,8 @@ let firstOperand = "";
 let operator = "";
 let secondOperand = "";
 
+const calcDisplay = document.getElementById("display");
+
 const add = (a, b) =>  Number(a) + Number(b);
 const subtract = (a, b) => Number(a) - Number(b);
 const multiply = (a, b) => Number(a) * Number(b);
@@ -21,12 +23,10 @@ function operate(a, operator, b) {
 }
 
 function appendToDisplay(valueToDisplay) {
-    const calcDisplay = document.getElementById("display");
     calcDisplay.textContent += valueToDisplay;
 }
 
 function clearDisplay() {
-    const calcDisplay = document.getElementById("display");
     calcDisplay.textContent = "";
 }
 
