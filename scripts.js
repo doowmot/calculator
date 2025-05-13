@@ -65,17 +65,25 @@ function initialiseOperatorButtons() {
     }
 }
 
-function initialiseControlButtons() {
+function handleEqualsInput() {
+    const result = operate(Number(firstOperand), operator, Number(secondOperand));
+    appendToDisplay(result)
+    console.log("the result is:", result);
+}
+
+function initialiseEqualsButton() {
     const equalsButton = document.getElementById("equals-button");
-    const clearButton = document.getElementById("clear-button");
     const calcDisplay = document.getElementById("display");
 
     equalsButton.addEventListener('click', function() {
         calcDisplay.textContent = "";
-        const result = operate(Number(firstOperand), operator, Number(secondOperand));
-        appendToDisplay(result);
-        console.log("the result is:", result);
+        handleEqualsInput()
     });
+}
+
+function initialiseControlButtons() {
+    const clearButton = document.getElementById("clear-button");
+    const calcDisplay = document.getElementById("display");
 
     clearButton.addEventListener('click', function() {
         calcDisplay.textContent = "";
@@ -88,7 +96,7 @@ function initialiseControlButtons() {
 function initialiseCalculator() {
     initialiseDigitButtons();
     initialiseOperatorButtons();
-    initialiseControlButtons();
+    initialiseEqualsButton();
 }
 
 initialiseCalculator();
