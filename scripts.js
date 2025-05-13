@@ -56,7 +56,6 @@ function initialiseEqualsButton() {
     const equalsButton = document.getElementById("equals-button");
 
     equalsButton.addEventListener('click', function() {
-        clearDisplay();
         handleEqualsInput();
     });
 }
@@ -89,11 +88,17 @@ function handleOperatorInput(clickedOperator) {
 }
 
 function handleEqualsInput() {
+    if (firstOperand === "" || operator === "" || secondOperand === "") {
+        return;
+    }
+
     if (operator === "/" && secondOperand === "0") {
         appendToDisplay("cannot divide by zero");
         return;
     }
 
+    clearDisplay()
+    
     const result = operate(Number(firstOperand), operator, Number(secondOperand));
     appendToDisplay(Number(result.toFixed(5)));
     console.log("the result is:", result);
