@@ -48,15 +48,19 @@ function initialiseDigitButtons() {
     }
 }
 
+function handleOperatorInput(clickedOperator) {
+    appendToDisplay(clickedOperator);
+    console.log("operator is:", clickedOperator);
+    operator = clickedOperator;
+}
+
 function initialiseOperatorButtons() {
     const operatorButtons = document.querySelectorAll(".operator-button");
 
     for (const button of operatorButtons) {
         button.addEventListener('click', function() {
         const clickedOperator = this.textContent;
-        appendToDisplay(clickedOperator);
-        operator = clickedOperator;
-        console.log("operator is:", operator);
+        handleOperatorInput(clickedOperator)
         });
     }
 }
