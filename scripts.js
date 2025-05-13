@@ -72,7 +72,7 @@ function initialiseOperatorButtons() {
 
 function handleEqualsInput() {
     const result = operate(Number(firstOperand), operator, Number(secondOperand));
-    appendToDisplay(result)
+    appendToDisplay(Number(result.toFixed(5)));
     console.log("the result is:", result);
 
     firstOperand = result;
