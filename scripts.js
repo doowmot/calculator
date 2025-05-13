@@ -89,10 +89,15 @@ function handleOperatorInput(clickedOperator) {
 }
 
 function handleEqualsInput() {
+    if (operator === "/" && secondOperand === "0") {
+        appendToDisplay("cannot divide by zero");
+        return;
+    }
+
     const result = operate(Number(firstOperand), operator, Number(secondOperand));
     appendToDisplay(Number(result.toFixed(5)));
     console.log("the result is:", result);
-
+    
     firstOperand = result;
     operator = "";
     secondOperand = "";
