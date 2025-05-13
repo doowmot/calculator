@@ -85,15 +85,18 @@ function initialiseEqualsButton() {
     });
 }
 
-function initialiseControlButtons() {
+function handleClearInput() {
+    firstOperand = "";
+    operator = "";
+    secondOperand = "";
+}
+
+function initialiseClearButton() {
     const clearButton = document.getElementById("clear-button");
-    const calcDisplay = document.getElementById("display");
 
     clearButton.addEventListener('click', function() {
-        calcDisplay.textContent = "";
-        firstOperand = "";
-        operator = "";
-        secondOperand = "";
+        clearDisplay();
+        handleClearInput();
     });
 }
 
@@ -101,6 +104,7 @@ function initialiseCalculator() {
     initialiseDigitButtons();
     initialiseOperatorButtons();
     initialiseEqualsButton();
+    initialiseClearButton();
 }
 
 initialiseCalculator();
