@@ -74,6 +74,10 @@ function handleEqualsInput() {
     const result = operate(Number(firstOperand), operator, Number(secondOperand));
     appendToDisplay(result)
     console.log("the result is:", result);
+
+    firstOperand = result;
+    operator = "";
+    secondOperand = "";
 }
 
 function initialiseEqualsButton() {
