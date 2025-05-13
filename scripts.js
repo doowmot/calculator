@@ -25,6 +25,11 @@ function appendToDisplay(valueToDisplay) {
     calcDisplay.textContent += valueToDisplay;
 }
 
+function clearDisplay() {
+    const calcDisplay = document.getElementById("display");
+    calcDisplay.textContent = "";
+}
+
 function handleDigitInput(digit) {
     appendToDisplay(digit);
 
@@ -73,11 +78,10 @@ function handleEqualsInput() {
 
 function initialiseEqualsButton() {
     const equalsButton = document.getElementById("equals-button");
-    const calcDisplay = document.getElementById("display");
 
     equalsButton.addEventListener('click', function() {
-        calcDisplay.textContent = "";
-        handleEqualsInput()
+        clearDisplay();
+        handleEqualsInput();
     });
 }
 
