@@ -30,18 +30,6 @@ function clearDisplay() {
     calcDisplay.textContent = "";
 }
 
-function handleDigitInput(digit) {
-    appendToDisplay(digit);
-
-    if (operator === "") {
-        firstOperand += digit;
-        console.log("first number is:", firstOperand);
-    } else if (operator !== "") {
-        secondOperand += digit;
-        console.log("second number is:", secondOperand);
-    }     
-}
-
 function initialiseDigitButtons() {
     const digitButtons = document.querySelectorAll(".digit-button");
 
@@ -51,12 +39,6 @@ function initialiseDigitButtons() {
             handleDigitInput(clickedDigit);
         });
     }
-}
-
-function handleOperatorInput(clickedOperator) {
-    appendToDisplay(clickedOperator);
-    console.log("operator is:", clickedOperator);
-    operator = clickedOperator;
 }
 
 function initialiseOperatorButtons() {
@@ -70,6 +52,42 @@ function initialiseOperatorButtons() {
     }
 }
 
+function initialiseEqualsButton() {
+    const equalsButton = document.getElementById("equals-button");
+
+    equalsButton.addEventListener('click', function() {
+        clearDisplay();
+        handleEqualsInput();
+    });
+}
+
+function initialiseClearButton() {
+    const clearButton = document.getElementById("clear-button");
+
+    clearButton.addEventListener('click', function() {
+        clearDisplay();
+        handleClearInput();
+    });
+}
+
+function handleDigitInput(digit) {
+    appendToDisplay(digit);
+
+    if (operator === "") {
+        firstOperand += digit;
+        console.log("first number is:", firstOperand);
+    } else if (operator !== "") {
+        secondOperand += digit;
+        console.log("second number is:", secondOperand);
+    }     
+}
+
+function handleOperatorInput(clickedOperator) {
+    appendToDisplay(clickedOperator);
+    console.log("operator is:", clickedOperator);
+    operator = clickedOperator;
+}
+
 function handleEqualsInput() {
     const result = operate(Number(firstOperand), operator, Number(secondOperand));
     appendToDisplay(Number(result.toFixed(5)));
@@ -80,28 +98,10 @@ function handleEqualsInput() {
     secondOperand = "";
 }
 
-function initialiseEqualsButton() {
-    const equalsButton = document.getElementById("equals-button");
-
-    equalsButton.addEventListener('click', function() {
-        clearDisplay();
-        handleEqualsInput();
-    });
-}
-
 function handleClearInput() {
     firstOperand = "";
     operator = "";
     secondOperand = "";
-}
-
-function initialiseClearButton() {
-    const clearButton = document.getElementById("clear-button");
-
-    clearButton.addEventListener('click', function() {
-        clearDisplay();
-        handleClearInput();
-    });
 }
 
 function initialiseCalculator() {
